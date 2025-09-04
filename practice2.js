@@ -4,9 +4,9 @@ const quote = document.querySelector('#quote');
 
 async function get() {
     try {
-        const response = await fetch("https://api.quotable.io/random");
+        const response = await fetch("http://localhost:3000/api/quote");
         const data = await response.json();
-        console.log(`"${data.content}" - ${data.author}`);
+        console.log(data[0].q + " - " + data[0].a);
     } catch (error) {
         console.warn('Failed to load the quote.')
     }
