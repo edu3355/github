@@ -93,3 +93,25 @@ button {
   transform: rotate(18deg);
   scale: 2;
 }
+
+.quote-msg {
+  display: inline-block;
+  min-width: 220px;
+  margin-left: 20px;
+  padding: 10px 18px;
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.4s, transform 0.4s;
+  position: relative;
+  z-index: 10;
+}
+
+.quote-msg.show {
+  opacity: 1;
+  transform: translateX(0);
+}
