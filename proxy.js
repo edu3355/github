@@ -1,6 +1,6 @@
 const express = require('express');
-const fetch = require('node-fetch');
 const cors = require('cors');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +13,7 @@ app.get('/api/quote', async (req, res) => {
     const data = await response.json();
     res.json(data);
   } catch (error) {
+    console.error('Error fetching quote:', error); // 에러 로그 추가
     res.status(500).json({ error: 'Failed to fetch quote' });
   }
 });
