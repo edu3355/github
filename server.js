@@ -13,7 +13,7 @@ app.get('/api/quote', async (req, res) => {
     const data = await response.json();
     res.json(data);
   } catch (error) {
-    console.error('Error fetching quote:', error); // 에러 로그 추가
+    console.error('Error fetching quote:', error);
     res.status(500).json({ error: 'Failed to fetch quote' });
   }
 });

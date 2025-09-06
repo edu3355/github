@@ -24,6 +24,7 @@ body {
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  transition: all 0.4s ease;
 }
 
 a {
@@ -94,4 +95,64 @@ button {
 .quote-msg.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 117px;
+  height: 57px;
+  border: 4px solid transparent;
+  border-radius: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+  box-shadow: 0 0 5px rgba(0,0,0, 0.6);
+}
+
+.slider::before {
+  position: absolute;
+  content:"";
+  height: 42px;
+  width: 42px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+  box-shadow: 0 2px 5px rgba(0,0,0, 0.4);
+}
+
+input:checked + .slider {
+  background-color: #333;
+}
+
+input:checked + .slider::before {
+  transform: translateX(60px);
+}
+
+label.switch {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  margin: 0;
+  left: auto;
+  top: auto;
+  transform: none;
+  z-index: 1100;
 }

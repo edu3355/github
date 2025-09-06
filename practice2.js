@@ -1,5 +1,6 @@
 const quote = document.querySelector('#quote');
 const quoteMsg = document.querySelector('#quote-msg');
+const toggle = document.querySelector('#toggle');
 
 async function get() {
     try {
@@ -29,3 +30,11 @@ function showQuoteMsg(msg) {
 }
 
 quote.addEventListener("click", get);
+
+toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+        document.body.style.backgroundColor = 'white';
+    } else {
+        document.body.style.backgroundColor = '#333';
+    }
+});
