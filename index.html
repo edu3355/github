@@ -4,14 +4,39 @@
         <meta charset="utf-8">
         <title>Quote</title>
         <link rel="stylesheet" href="style.css">
-        <script src="practice2.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script>
     </head>
     <body>
+      <span class="title">Quote Generator</span>
+      <div class="gridbox" id="gridbox">
+        <div class="element" id="date"></div>
+        <div class="element" id="time"></div>
+        <div class="element" id="widget1"></div>
+        <div class="element" id="widget2"></div>
+      </div>
         <button id="quote" class="quote">Generate Quote</button>
-        <label class="switch">
-            <input type="checkbox" id="toggle">
-            <span class="slider"></span>
-        </label>
+        <button id="settings-btn" class="settings-btn" aria-label="Settings">
+          <span class="setting" id="setting">Settings</span>
+        </button>
+        <div id="settings-modal" class="settings-modal">
+          <div class="settings-modal-content">
+            <h2>Settings</h2>
+            <div class="theme-toggle-row">
+              <span>Theme</span>
+              <label class="switch">
+                <input type="checkbox" id="modal-toggle">
+                <span class="slider" id="modal-slider"></span>
+              </label>
+            </div>
+            <button id="close-modal" class="close-modal">Close</button>
+          </div>
+        </div>
         <span id="quote-msg" class="quote-msg"></span>
+        <span class="powerby" id="powerby">Quotes provided by ZenQuotes</span>
     </body>
 </html>
+
+<!--옆에 예시 quote들 살짝 기울여져서 떠다니도록 하기(랜덤이면 더 좋고)-->
