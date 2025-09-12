@@ -310,6 +310,7 @@ label.switch {
   background-clip: text;
   color: transparent;
   transition: all 0.4s ease;
+  margin-bottom: 50px;
 }
 
 .title::selection {
@@ -320,4 +321,50 @@ label.switch {
 .title:hover {
   transform: scale(1.07);
   transform: rotate(7deg);
+}
+
+.exquote {
+  width: auto;
+  height: auto;
+  max-width: 470px;
+  color: black;
+  position: fixed;
+  transform: rotate(-8deg);
+  left: 14%;
+  top: 53%;
+  right: auto;
+  bottom: auto;
+  text-align: center;
+}
+
+.content {
+  font-size: 35px;
+}
+
+.exquote2 {
+  width: auto;
+  height: auto;
+  max-width: 400px;
+  color: black;
+  position: fixed;
+  transform: rotate(8deg);
+  left: 14%;
+  top: 40%;
+  right: auto;
+  bottom: auto;
+  text-align: center;
+}
+
+.exquote3 {
+  width: auto;
+  height: auto;
+  max-width: 450px;
+  color: black;
+  position: fixed;
+  transform: rotate(8deg);
+  left: 14%;
+  top: 70%;
+  right: auto;
+  bottom: auto;
+  text-align: center;
 }
