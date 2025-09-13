@@ -1,6 +1,5 @@
 const quote = document.querySelector('#quote');
 const quoteMsg = document.querySelector('#quote-msg');
-const settingsBtn = document.getElementById('settings-btn');
 const settingsModal = document.getElementById('settings-modal');
 const closeModalBtn = document.getElementById('close-modal');
 const modalToggle = document.getElementById('modal-toggle');
@@ -11,6 +10,8 @@ const date = document.querySelector('#date');
 const widget1 = document.querySelector('#widget1');
 const widget2 = document.querySelector('#widget2');
 const gridbox = document.querySelector('#gridbox');
+const navLinks = document.querySelectorAll('.nav-link');
+const homeLink = document.querySelector('.nav-link[id="Home"]');
 const title = document.querySelector('.title');
 const exquote = document.querySelector('#exquote');
 const exquote2 = document.querySelector('#exquote2');
@@ -57,12 +58,28 @@ function updateTime() {
 
 quote.addEventListener("click", get);
 
-settingsBtn.addEventListener('click', () => {
-    settingsModal.classList.add('show');
+// 네비게이션 링크 클릭 이벤트
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        // 모든 링크에서 active 클래스 제거
+        navLinks.forEach(l => l.classList.remove('active'));
+        // 클릭된 링크에 active 클래스 추가
+        link.classList.add('active');
+        
+        // Setting 링크 클릭 시 모달 표시
+        if (link.textContent === 'Setting') {
+            settingsModal.classList.add('show');
+        }
+    });
 });
+
 closeModalBtn.addEventListener('click', () => {
     settingsModal.classList.remove('show');
+    navLinks.forEach(l => l.classList.remove('active'));
+    homeLink.classList.add('active');
 });
+
 settingsModal.addEventListener('click', (e) => {
     if (e.target === settingsModal) {
         settingsModal.classList.remove('show');
@@ -99,11 +116,10 @@ function animateElements() {
         { el: title, delay: 0 },
         { el: gridbox, delay: 200 },
         { el: quote, delay: 400 },
-        { el: settingsBtn, delay: 600 },
-        { el: powerby, delay: 800 },
-        { el: exquote2, delay: 1000 },
-        { el: exquote, delay: 1200 },
-        { el: exquote3, delay: 1400 }
+        { el: powerby, delay: 600 },
+        { el: exquote2, delay: 800 },
+        { el: exquote, delay: 1000 },
+        { el: exquote3, delay: 1200 }
     ];
 
     // 모든 요소 초기화
@@ -132,7 +148,6 @@ function animateElements() {
     });
 }
 
-// 페이지 로드 완료 후 애니메이션 시작
 window.addEventListener('load', animateElements);
 
 setInterval(updateTime, 1000);
