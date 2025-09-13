@@ -11,6 +11,10 @@ const date = document.querySelector('#date');
 const widget1 = document.querySelector('#widget1');
 const widget2 = document.querySelector('#widget2');
 const gridbox = document.querySelector('#gridbox');
+const title = document.querySelector('.title');
+const exquote = document.querySelector('#exquote');
+const exquote2 = document.querySelector('#exquote2');
+const exquote3 = document.querySelector('#exquote3');
 
 async function get() {
     try {
@@ -88,6 +92,48 @@ modalToggle.addEventListener('change', () => {
         quote.classList.remove('quotedark');
     }
 });
+
+// 페이지 로드 시 요소들 순차적으로 나타나게 하기
+function animateElements() {
+    const elements = [
+        { el: title, delay: 0 },
+        { el: gridbox, delay: 200 },
+        { el: quote, delay: 400 },
+        { el: settingsBtn, delay: 600 },
+        { el: powerby, delay: 800 },
+        { el: exquote2, delay: 1000 },
+        { el: exquote, delay: 1200 },
+        { el: exquote3, delay: 1400 }
+    ];
+
+    // 모든 요소 초기화
+    elements.forEach(({el}) => {
+        if (el) {
+            el.classList.add('hidden');
+        }
+    });
+
+    // 순차적으로 요소들을 보여줌
+    elements.forEach(({el, delay}) => {
+        if (el) {
+            setTimeout(() => {
+                el.classList.remove('hidden');
+                el.classList.add('fade-in');
+                if (el.classList.contains('exquote') || 
+                    el.classList.contains('exquote2') || 
+                    el.classList.contains('exquote3')) {
+                    // exquote 요소들은 float 애니메이션을 위해 show 클래스도 추가
+                    setTimeout(() => {
+                        el.classList.add('show');
+                    }, 600); // 페이드인 애니메이션이 끝난 후 float 시작
+                }
+            }, delay);
+        }
+    });
+}
+
+// 페이지 로드 완료 후 애니메이션 시작
+window.addEventListener('load', animateElements);
 
 setInterval(updateTime, 1000);
 updateTime();

@@ -5,6 +5,44 @@
   box-sizing: border-box;
 }
 
+/* 기본 요소들을 위한 초기 스타일과 애니메이션 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in-rotate1 {
+  animation: fadeInUpRotate1 0.6s ease-out forwards;
+}
+
+.fade-in-rotate2 {
+  animation: fadeInUpRotate2 0.6s ease-out forwards;
+}
+
+/* 초기 상태에서 요소들을 숨김 */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -309,8 +347,8 @@ label.switch {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  transition: all 0.4s ease;
   margin-bottom: 50px;
+  transform-origin: center;
 }
 
 .title::selection {
@@ -318,9 +356,71 @@ label.switch {
   color: #3c60ff;
 }
 
-.title:hover {
-  transform: scale(1.07);
-  transform: rotate(7deg);
+.title.show {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.title.show:hover {
+  transform: translateY(0) scale(1.07) rotate(7deg);
+  transition: transform 0.4s ease;
+}
+
+@keyframes float1 {
+  0% {
+    transform: translate(0, 0) rotate(-8deg);
+  }
+  50% {
+    transform: translate(-15px, -15px) rotate(-6deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-8deg);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translate(0, 0) rotate(8deg);
+  }
+  50% {
+    transform: translate(15px, -20px) rotate(10deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(8deg);
+  }
+}
+
+@keyframes float3 {
+  0% {
+    transform: translate(0, 0) rotate(8deg);
+  }
+  50% {
+    transform: translate(-20px, -10px) rotate(6deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(8deg);
+  }
+}
+
+@keyframes fadeInQuote1 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotate(-8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(-8deg);
+  }
+}
+
+@keyframes fadeInQuote2 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotate(8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(8deg);
+  }
 }
 
 .exquote {
@@ -329,12 +429,17 @@ label.switch {
   max-width: 470px;
   color: black;
   position: fixed;
-  transform: rotate(-8deg);
   left: 14%;
   top: 53%;
   right: auto;
   bottom: auto;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px) rotate(-8deg);
+}
+
+.exquote.fade-in {
+  animation: fadeInQuote1 0.6s ease-out forwards;
 }
 
 .content {
@@ -347,12 +452,17 @@ label.switch {
   max-width: 400px;
   color: black;
   position: fixed;
-  transform: rotate(8deg);
   left: 14%;
   top: 40%;
   right: auto;
   bottom: auto;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px) rotate(8deg);
+}
+
+.exquote2.fade-in {
+  animation: fadeInQuote2 0.6s ease-out forwards;
 }
 
 .exquote3 {
@@ -361,10 +471,57 @@ label.switch {
   max-width: 450px;
   color: black;
   position: fixed;
-  transform: rotate(8deg);
   left: 14%;
   top: 70%;
   right: auto;
   bottom: auto;
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px) rotate(8deg);
+}
+
+.exquote3.fade-in {
+  animation: fadeInQuote2 0.6s ease-out forwards;
+}
+
+.exquote.show, .exquote2.show, .exquote3.show {
+  opacity: 1;
+  transform: translateY(0) rotate(-8deg);
+}
+
+.exquote2.show, .exquote3.show {
+  transform: translateY(0) rotate(8deg);
+}
+
+/* 부드러운 떠다니는 효과는 show 클래스가 적용된 후에 시작 */
+.exquote.show {
+  animation: float1 6s ease-in-out infinite;
+}
+
+.exquote2.show {
+  animation: float2 7s ease-in-out infinite;
+}
+
+.exquote3.show {
+  animation: float3 8s ease-in-out infinite;
+}
+
+.people1 {
+  width: 500px;
+  height: 610px;
+  color: black;
+  position: fixed;
+  left: -9%;
+  top: -3%;
+  right: auto;
+  bottom: auto;
+  padding: 7px;
+  border: 10px solid #ccc;
+  border-radius: 20px;
+  transform: rotate(10deg);
+  transition: all 0.5s ease;
+}
+
+.people1:hover {
+  transform: scale(1.05) rotate(7deg) translateX(130px);
 }
